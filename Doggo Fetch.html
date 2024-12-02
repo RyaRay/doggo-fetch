@@ -113,7 +113,7 @@
     // return the breed name string as formatted in the breed list, e.g. "standard poodle"
     function getBreedFromURL(url) {
         // The string method .split(char) may come in handy
-        // Try to use destructuring as much as you can
+        // Try to  use destructuring as much as you can
         let breedURL = url.split("/")[4];
         if (breedURL.includes("-")) {
             breedURL = breedURL.split("-");
@@ -131,7 +131,10 @@
     // then parse the response as a JSON object,
     // finally return the "message" property of its body
     async function fetchMessage(url) {
-        
+        const response = await fetch(url);
+        const body = await response.json();
+        const {message} = body;
+        return message;
     }
 
 
